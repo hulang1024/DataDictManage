@@ -19,7 +19,7 @@ String value = userTypeDict.value(1);
 ```
 ### JS API
 ```js
-//服务器获取数据初始化
+//从服务器获取数据初始化
 DictMan.fetch();
 //清空缓存（重新fetch）
 DictMan.fetch();
