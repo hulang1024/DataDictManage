@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xtxk.hb.dict.DictDao"> 
+    <select id="selectDicts" resultType="com.xtxk.hb.dict.Dict" >
+        select
+            dict_name name,
+            note
+        from dicts
+        <where>
+            <if test="dictName != null and dictName != ''">
+                dict_name like '%${dictName}%'
+            </if>
+        </where>
+    </select>
+    
+    <select id="selectDictItems" resultType="com.xtxk.hb.dict.DictItem" >
+        select
+            dict_name dictName,
+            item_key `key`,
+            item_value `value`,
+            note
+        from dict_items
+        <where>
+            <if test="dictName != null and dictName != ''">
+                dict_name = #{dictName}
+            </if>
+        </where>
+    </select>
+</mapper>
