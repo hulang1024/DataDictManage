@@ -16,7 +16,7 @@ DictService.getAllDictsMap();
 //根据字典名获取字典
 Dict dict = DictService.dict("user.type");
 //字典根据名获取值
-String value = userTypeDict.value(1);
+String value = dict.value(1);
 ```
 ### JS API
 ```js
