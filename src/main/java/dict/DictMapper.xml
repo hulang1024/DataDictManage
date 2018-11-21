@@ -18,12 +18,14 @@
             dict_name dictName,
             item_key `key`,
             item_value `value`,
-            note
+            note,
+            sort
         from dict_items
         <where>
             <if test="dictName != null and dictName != ''">
                 dict_name = #{dictName}
             </if>
         </where>
+        order by sort
     </select>
 </mapper>

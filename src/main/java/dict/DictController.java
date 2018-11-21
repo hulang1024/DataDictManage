@@ -32,10 +32,10 @@ public class DictController {
         return dictDao.itemsByDictName(dictName);
     }
     
-    @RequestMapping("/maps")
+    @RequestMapping("/list")
     @ResponseBody
-    public Map<String, Dict> getAll() {
-        return DictService.getAllDictsMap();
+    public List<Dict> getAll() {
+        return DictService.getAllDicts();
     }
     
     @RequestMapping("/cleanCache")
@@ -43,5 +43,15 @@ public class DictController {
     public boolean cleanCache() {
         DictService.cleanCache();
         return true;
+    }
+    
+    /* 以下是旧接口,被引用,只能保留 */
+    @Autowired
+    private DictionaryDao ddictDao;
+    
+    @RequestMapping("/listByPid")
+    @ResponseBody
+    List<Dictionary> listByPid(String pid) {
+        return ddictDao.listDictionaryByType(pid);
     }
 }

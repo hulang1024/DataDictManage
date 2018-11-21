@@ -23,6 +23,7 @@ public class Dict {
         return name;
     }
     
+    @JsonIgnore
     public Map<String, String> getItemMap() {
         return itemMap;
     }
@@ -32,8 +33,7 @@ public class Dict {
         return itemMap.get(key.toString());
     }
     
-    @JsonIgnore
-    public List<DictItem> getDictItems() {
+    public List<DictItem> getItems() {
         return items;
     }
     

@@ -1,5 +1,6 @@
 package com.xtxk.hb.dict;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +19,9 @@ import com.xtxk.hb.framework.utils.ApplicationContextUtils;
 public class DictService extends DaoSupport {
     private static Map<String, Dict> dictsMap = null;
 
-    /*
-    @PostConstruct
     public static void init() {
-        getAll();
-    }*/
+        getAllDictsMap();
+    }
     
     public static void cleanCache() {
         dictsMap = null;
@@ -51,10 +50,20 @@ public class DictService extends DaoSupport {
         }
         
         List<DictItem> dictItems = dictDao.getAllDictItems();
+        Dict dict;
         for (DictItem dictItem : dictItems) {
-            dictsMap.get(dictItem.getDictName()).addItem(dictItem);
+            dict = dictsMap.get(dictItem.getDictName());
+            if (dict != null) {
+                dict.addItem(dictItem);
+            }
         }
 
         return dictsMap;
+    }
+
+    public static List<Dict> getAllDicts() {
+        List<Dict> list = new ArrayList<Dict>();
+        list.addAll(getAllDictsMap().values());
+        return list;
     }
 }

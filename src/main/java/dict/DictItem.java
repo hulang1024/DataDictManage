@@ -7,6 +7,7 @@ public class DictItem {
     private String key;
     private String value;
     private String note;
+    private Integer sort;
 
     @JsonIgnore
     public String getDictName() {
@@ -33,6 +34,12 @@ public class DictItem {
     }
     public void setNote(String note) {
         this.note = note;
+    }
+    public Integer getSort() {
+        return sort;
+    }
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
     
 
