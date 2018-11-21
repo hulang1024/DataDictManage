@@ -44,14 +44,4 @@ public class DictController {
         DictService.cleanCache();
         return true;
     }
-    
-    /* 以下是旧接口,被引用,只能保留 */
-    @Autowired
-    private DictionaryDao ddictDao;
-    
-    @RequestMapping("/listByPid")
-    @ResponseBody
-    List<Dictionary> listByPid(String pid) {
-        return ddictDao.listDictionaryByType(pid);
-    }
 }
